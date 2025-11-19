@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Run mabl mobile test
-      uses: mablhq/mabl-action@v1
-      with:
-        api-key: ${{ secrets.API_Key }}
-        application-id: "Nv0ZecR8RpeHplwOCTsSTQ"
-        plan-id: "qulC4XhisnuBV3LvnCbrDg-p"
-        environment-id: "wX6fU33nyZCxJUl21wXyXw-a"
-        device-type: "real"
-        device-name: "Google Pixel 6"
-        os-version: "13.0"
+      - name: Functional test deployment (mabl)
+        id: mabl-test-deployment
+        uses: mablhq/github-run-tests-action@v1
+        env:
+          # Use the secret you created in your repo settings
+          MABL_API_KEY: ${{ secrets.API_Key }}     # <-- you can rename secret to MABL_API_KEY if preferred
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          application-id: "Nv0ZecR8RpeHplwOCTsSTQ"
+          environment-id: "wX6fU33nyZCxJUl21wXyXw-a"
