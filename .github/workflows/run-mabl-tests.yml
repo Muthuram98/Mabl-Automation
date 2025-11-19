@@ -18,7 +18,7 @@ jobs:
         uses: mablhq/github-run-tests-action@v1
         env:
           # Use the secret you created in your repo settings
-          MABL_API_KEY: ${{ secrets.API_Key }}     # <-- you can rename secret to MABL_API_KEY if preferred
+          MABL_API_KEY: ${{ secrets.API_KEY }}     # <-- you can rename secret to MABL_API_KEY if preferred
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           application-id: "wX6fU33nyZCxJUl21wXyXw-a"
